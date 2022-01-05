@@ -40,3 +40,4 @@ build/
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml
+.idea
