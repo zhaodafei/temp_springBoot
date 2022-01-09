@@ -17,4 +17,24 @@ public class UserServiceImpl implements UserService {
     public User selectUser(long userId) {
         return userMapper.selectUser(userId);
     }
+
+    @Override
+    public User selectUserTwo(long userId) {
+        return userMapper.selectUserTwo(userId);
+    }
+
+    @Override
+    public User selectUserThree(long userId) {
+        return userMapper.selectUserThree(userId);
+    }
+
+    @Override
+    public User selectUserFour(User user) {
+        return userMapper.selectUserFour(user);
+    }
+
+    @Override
+    public User selectUserFive(User user) {
+        return userMapper.selectUserFive(user);
+    }
 }

@@ -1,12 +1,18 @@
 package com.example.fei.domain;
 
-// model bean domain
+import com.alibaba.druid.support.monitor.annotation.MTable;
+
+// 这一层常用名字 model bean domain
 public class User {
+
     private long id;
     private String username;
     private String password;
     private String email;
     private String mobile;
+
+    // fei_tip: 自定义数据库映射字段,在 UserMapper 中写对应映射关系
+    private String foo;
 
     public long getId() {
         return id;
@@ -46,6 +52,14 @@ public class User {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getFoo() {
+        return foo;
+    }
+
+    public void setFoo(String foo) {
+        this.foo = foo;
     }
 
 }

@@ -22,3 +22,14 @@ mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   # 加载全局的配置文件
   #config-location: classpath:mybatis/mybatis-config.xml
+  # 输出 MyBatis 中的 SQL
+  #configuration:
+  #  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 控制台输出SQL
+logging:
+  level:
+    com.example.fei.mapper: DEBUG
+
+
+
