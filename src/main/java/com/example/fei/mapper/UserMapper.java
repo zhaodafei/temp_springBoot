@@ -1,6 +1,7 @@
 package com.example.fei.mapper;
 
 import com.example.fei.domain.User;
+import com.example.fei.domain.User2;
 import org.apache.ibatis.annotations.Select;
 
 // 这一层常用名字 dao mapper
@@ -8,14 +9,18 @@ import org.apache.ibatis.annotations.Select;
 // @Mapper
 public interface UserMapper {
     // 查询一条数据
-     User selectUser(long id);
+    User selectUser(long id);
 
-     User selectUserTwo(long id);
+    User selectUser2(long id);
 
-     @Select("SELECT * FROM user WHERE id=#{id}")
-     User selectUserThree(long id);
+    // @Select("SELECT * FROM user WHERE id=#{id}")
+    // User selectUser3(long id);
 
-     User selectUserFour(User user);
+    User selectUser4(User user);
 
-     User selectUserFive(User user);
+    User selectUser5(User user);
+
+    User2 selectUser6(long id);
+
+    User selectUser7(long id);
 }

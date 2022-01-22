@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.fei.common.core.AjaxResult;
 import com.example.fei.common.utils.StringUtils;
 import com.example.fei.domain.User;
+import com.example.fei.domain.User2;
 import com.example.fei.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,13 +68,13 @@ public class UserController {
      * http://localhost:8080/selectTwo
      */
     @RequestMapping("/select02")
-    public AjaxResult selectUserTwo() {
+    public AjaxResult selectUser2() {
         AjaxResult ajax = AjaxResult.success();
         JSONObject object = new JSONObject();
         object.put("name", "fei");
         object.put("age", 18);
 
-        User user = userService.selectUserTwo(2);
+        User user = userService.selectUser2(2);
 
         ajax.put(AjaxResult.DATA_TAG, user);
         ajax.put("foo", "自定义数据");
@@ -82,19 +83,19 @@ public class UserController {
         return ajax;
     }
 
-    @RequestMapping("/select03")
-    public AjaxResult selectUserThree() {
-        AjaxResult ajax = AjaxResult.success();
-
-        User user = userService.selectUserThree(3);
-
-        ajax.put(AjaxResult.DATA_TAG, user);
-
-        return ajax;
-    }
+    // @RequestMapping("/select03")
+    // public AjaxResult selectUser3() {
+    //     AjaxResult ajax = AjaxResult.success();
+    //
+    //     User user = userService.selectUser3(3);
+    //
+    //     ajax.put(AjaxResult.DATA_TAG, user);
+    //
+    //     return ajax;
+    // }
 
     @RequestMapping("/select04")
-    public AjaxResult selectUserFour() {
+    public AjaxResult selectUser4() {
         AjaxResult ajax = AjaxResult.success();
 
         // fei_tip: 模拟查询条件
@@ -102,7 +103,7 @@ public class UserController {
         userDomain.setId(4);
         userDomain.setUsername("dafei_04");
 
-        User user = userService.selectUserFour(userDomain);
+        User user = userService.selectUser4(userDomain);
 
         ajax.put(AjaxResult.DATA_TAG, user);
 
@@ -110,7 +111,7 @@ public class UserController {
     }
 
     @RequestMapping("/select05")
-    public AjaxResult selectUserFive() {
+    public AjaxResult selectUser5() {
         AjaxResult ajax = AjaxResult.success();
 
         // fei_tip: 模拟查询条件
@@ -118,7 +119,33 @@ public class UserController {
         userDomain.setId(5);
         userDomain.setUsername("dafei_05");
 
-        User user = userService.selectUserFive(userDomain);
+        User user = userService.selectUser5(userDomain);
+
+        ajax.put(AjaxResult.DATA_TAG, user);
+
+        return ajax;
+    }
+
+    /**
+     * 关联表查询
+     * @return
+     */
+    @RequestMapping("/select06")
+    public AjaxResult selectUser6() {
+        AjaxResult ajax = AjaxResult.success();
+
+        User2 user2 = userService.selectUser6(1);
+
+        ajax.put(AjaxResult.DATA_TAG, user2);
+
+        return ajax;
+    }
+
+    @RequestMapping("/select07")
+    public AjaxResult selectUser7() {
+        AjaxResult ajax = AjaxResult.success();
+
+        User user = userService.selectUser7(1);
 
         ajax.put(AjaxResult.DATA_TAG, user);
 
