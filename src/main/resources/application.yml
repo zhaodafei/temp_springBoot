@@ -31,5 +31,14 @@ logging:
   level:
     com.example.fei.mapper: DEBUG
 
+# token配置
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: fei_Secret_123456
+  # 令牌有效期（默认30分钟）
+  expireTime: 30
+
 
 

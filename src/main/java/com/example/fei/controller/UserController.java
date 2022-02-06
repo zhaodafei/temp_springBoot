@@ -1,14 +1,13 @@
 package com.example.fei.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.fei.common.core.AjaxResult;
-import com.example.fei.common.utils.StringUtils;
 import com.example.fei.domain.User;
 import com.example.fei.domain.User2;
+import com.example.fei.service.TokenService;
 import com.example.fei.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +18,9 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TokenService tokenService;
 
     /**
      * 访问首页
@@ -151,4 +153,40 @@ public class UserController {
 
         return ajax;
     }
+
+    /**
+     * 测试 http://localhost:8080/login
+     * @return {}
+     */
+    @RequestMapping("/login")
+    public HashMap<String, String> login()
+    {
+        String token = tokenService.createToken();
+
+        return new HashMap<String, String>() {{
+            put("code", "200");
+            put("id", "1");
+            put("token", token);
+        }};
+    }
+
+    /**
+     * 测试 http://localhost:8080/isLogin?foo=xxx
+     * @param foo Sting 在login接口中获取的值
+     * @return {}
+     */
+    @GetMapping("/isLogin")
+    public HashMap<String, String> isLogin(String foo)
+    {
+        // System.out.println(foo);
+
+        Boolean token = tokenService.parseJWT(foo);
+
+        return new HashMap<String, String>() {{
+            put("code", "200");
+            put("id", "1");
+            put("token", String.valueOf(token));
+        }};
+    }
+
 }
